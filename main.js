@@ -1,23 +1,11 @@
 class SocialShare{
     constructor(obj){
         this.AppIDfb = obj.facebook.appId;
-        this.FbInit(this.AppIDfb);
-        this.findShareFB();
-        this.findShareTW();
+        this.facebook();
+        this.twitter();
     }
 
-    FbInit(appId){
-        FB.init({
-            appId            : appId,
-            autoLogAppEvents : true,
-            xfbml            : true,
-            version          : 'v2.12'
-        });
-
-        FB.AppEvents.logPageView();
-    }
-
-    findShareFB(){
+    facebook(){
         var btnTw = document.querySelectorAll("[social=facebook]");
         btnTw.forEach(function(item,index){
             item.addEventListener("click", function(e){
@@ -58,7 +46,7 @@ class SocialShare{
         })
     }
 
-    findShareTW(){
+    twitter(){
         var btnTw = document.querySelectorAll("[social=twitter]");
         btnTw.forEach(function(item,index){
             item.addEventListener("click", function(e){
