@@ -1,8 +1,10 @@
 class SocialShare{
     constructor(obj){
+        this.ogImage = obj.image;
         this.facebook();
         this.twitter();
         this.linkedin();
+        this.setOG(this.ogImage)
     }
 
     facebook(){
@@ -154,12 +156,18 @@ class SocialShare{
         })
     }
 
-    test(){}
+    setOG(image){
+        var a = document.querySelectorAll("meta");
+        a.forEach(function(i){
+            if(i.getAttribute("property") === "og:image"){
+                i.setAttribute("content",image)
+            }
+        })
+
+        
+    }
 }
 
-var social = new SocialShare();
-
-
-//social.test();
-
-//https://www.linkedin.com/shareArticle?mini=true&url=http%3A//google.cl&title=Google&summary=opcional%20decia&source=fuente
+var social = new SocialShare({
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa4d6XTp4NwEQ_-bqulBasEAUb9rhjjD1i4le9JgZNRXMdbG9u"
+});
